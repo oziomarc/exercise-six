@@ -1,8 +1,12 @@
 import React from "react";
+import CreateUserForm from "../components/LoginForm";
 
-function CraeteUser() {
+function CreateUser() {
     return(
-        <div></div>
+        <div>
+            <h1>Create User</h1>
+            <CreateUserForm/>
+        </div>
     )
 }
 

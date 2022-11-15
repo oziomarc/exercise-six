@@ -1,8 +1,9 @@
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import './App.css';
-import {createBrowserRouter, RoutuerProvider} from "react-router"
 import CreateUser from './pages/CreateUser';
-import Login from './pages/Login';
-import Profile from './pages/UserProfile';
+import LoginPage from './pages/Login';
+import UserProfile from './pages/UserProfile';
+import Header from './components/Header';
 
 const router = createBrowserRouter([
   {
@@ -11,17 +12,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />
+    element: <LoginPage />
   },
   {
     path: "/create",
     element: <CreateUser />
   }
-])
-;
+]);
+
 function App() {
   return (
     <div className="App">
+      <Header />
+      <RouterProvider router={router}/> 
     </div>
   );
 }
