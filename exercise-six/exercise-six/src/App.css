@@ -1,1 +1,53 @@
 
+header {
+    display: flex;
+    padding: 25px;
+    border: 1px solid black;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+    max-width: 1080px;
+    width: 100%;
+}
+
+nav p {
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    margin-left: 40px;
+}
+
+.FormElement {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    font-size: 2rem;
+}
+
+.FormElement input {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.FormElement label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.FormElement button {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.pageWrapper {
+    padding: 40px;
+}

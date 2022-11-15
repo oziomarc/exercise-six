@@ -1,9 +1,9 @@
 import React from "react";
 
-function LoginForm() {
+function CreateUserForm() {
     return (
-        <form>
-            <label for="userName">Username</label>
+        <form className="FormElement">
+            <label htmlFor="userName">Username</label>
             <input type="text" name="userName" />
 
             <button type="submit">Submit</button>
@@ -11,4 +11,4 @@ function LoginForm() {
     )
 }
 
-export default LoginForm;
+export default CreateUserForm;
