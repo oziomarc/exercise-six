@@ -17,30 +17,17 @@ const firebaseConfig = {
   appId: "1:720595367360:web:46f3a9f385585feb22c425"
 };
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <UserProfile />
-  },
-  {
-    path: "/login",
-    element: <LoginPage />
-  },
-  {
-    path: "/create",
-    element: <CreateUser />
-  }
-]);
 
 function App() {
   const [appInitialized, setAppInitialized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setisLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});
+
   useEffect(() => {
     initializeApp(firebaseConfig);
     setAppInitialized(true)
-  },[])
+  },[]) // runs once after the first render
 
   useEffect(() => {
     if (appInitialized) {
@@ -54,9 +41,32 @@ function App() {
           setisLoggedIn(false)
         }
         setIsLoading(false)
-      })
+      });
     }
-  }, [appInitialized])
+  }, [appInitialized]);
+
+  console.log({userInfo})
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <UserProfile />
+    },
+    {
+      path: "/login",
+      element: <LoginPage />
+    },
+    {
+      path: "/create",
+      element: (
+        <CreateUser 
+        setisLoggedIn={setisLoggedIn}
+        setUserInfo={setUserInfo}
+        />
+      )
+    },
+  ]);
+
   return (
     <div className="App">
       <Header />
