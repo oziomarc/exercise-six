@@ -21,7 +21,7 @@ const firebaseConfig = {
 function App() {
   const [appInitialized, setAppInitialized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
@@ -35,10 +35,10 @@ function App() {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           setUserInfo(user)
-          setisLoggedIn(true)
+          setIsLoggedIn(true)
         } else {
           setUserInfo({})
-          setisLoggedIn(false)
+          setIsLoggedIn(false)
         }
         setIsLoading(false)
       });
@@ -50,26 +50,35 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <UserProfile />
+      element: <UserProfile 
+        isLoading={isLoading}
+        userInfo={userInfo}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setUserInfo={setUserInfo}
+      />
     },
     {
       path: "/login",
-      element: <LoginPage />
+      element: <LoginPage 
+      isLoggedIn={isLoggedIn}
+      setIsLoggedIn={setIsLoggedIn}
+      setUserInfo={setUserInfo} />
     },
     {
       path: "/create",
-      element: (
+      element: 
         <CreateUser 
-        setisLoggedIn={setisLoggedIn}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
         setUserInfo={setUserInfo}
         />
-      )
+      ,
     },
   ]);
 
   return (
     <div className="App">
-      <Header />
       <RouterProvider router={router}/> 
     </div>
   );
